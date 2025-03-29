@@ -79,25 +79,6 @@
         "name": "Users",
         "item": [
           {
-            "name": "Get Current User",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{token}}"
-                }
-              ],
-              "url": {
-                "raw": "{{baseUrl}}/api/users/me",
-                "host": ["{{baseUrl}}"],
-                "path": ["api", "users", "me"]
-              },
-              "description": "Get the currently authenticated user's profile"
-            },
-            "response": []
-          },
-          {
             "name": "Get User Profile",
             "request": {
               "method": "GET",

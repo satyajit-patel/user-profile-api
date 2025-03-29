@@ -43,7 +43,6 @@ A RESTful API for managing user profiles with JWT authentication.
 |--------|----------|-------------|--------|
 | POST | /api/auth/register | Register a new user | Public |
 | POST | /api/auth/login | Authenticate user & get token | Public |
-| GET | /api/users/me | Get current user profile | Private |
 | GET | /api/users/:id | Get user profile by ID | Private (own profile only) |
 | PUT | /api/users/:id | Update user profile | Private (own profile only) |
 
