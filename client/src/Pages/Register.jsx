@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -27,11 +28,14 @@ const Register = () => {
         navigate("/login");
       } 
     } catch (err) {
-      setError(err.message);
+      console.log(err.message);
+      setError("Use valid credential");
     }
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex justify-center items-center min-h-screen bg-gray-900 py-8">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-white mb-6 text-center">Register</h2>
@@ -118,6 +122,7 @@ const Register = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

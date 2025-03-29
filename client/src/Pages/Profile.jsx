@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -16,24 +17,19 @@ const Profile = () => {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
 
-  // Get user and token from localStorage
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
     setToken(localStorage.getItem("token"));
   }, []);
 
-  // Show login error if no token
   useEffect(() => {
     if (!token) {
       setError("Please login first.");
     }
   }, [token]);
 
-  // Fetch profile only when `user` is available
   useEffect(() => {
-    if(user) {
-      console.log(typeof(user));
-      console.log(user);
+    if (user) {
       getProfile();
     }
   }, [user]);
@@ -88,8 +84,19 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-8">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-900 py-8 relative">
+      <div className="absolute top-2 right-2">
+        <Link to="/landing">
+          <button className="p-[3px] relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+            <div className="px-8 py-2 bg-black rounded-[6px] relative group transition duration-200 text-white hover:bg-transparent">
+              Logout
+            </div>
+          </button>
+        </Link>
+      </div>
+
+      <div className="container mx-auto p-8">
         {error && <div className="bg-red-600 text-white p-3 mb-4 rounded">{error}</div>}
 
         <div className="bg-gray-800 rounded-lg shadow-lg p-6 md:p-8">
@@ -167,7 +174,7 @@ const Profile = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-gray-300">Address</h3>
               <p className="text-white">{profile.address || "No address provided"}</p>
-              
+
               <h3 className="text-lg font-semibold text-gray-300">Bio</h3>
               <p className="text-white">{profile.bio || "No bio provided"}</p>
             </div>

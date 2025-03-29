@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -24,11 +25,14 @@ const Login = () => {
         navigate("/Profile"); 
       }
     } catch (err) {
-      setError(err.message);
+      console.log(err.message);
+      setError("Use valid credential");
     }
   };
 
   return (
+    <>
+    <Navbar />
     <div className="flex justify-center items-center min-h-screen bg-gray-900">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-white mb-6 text-center">Login</h2>
@@ -73,6 +77,7 @@ const Login = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 
