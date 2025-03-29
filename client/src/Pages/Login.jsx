@@ -20,7 +20,7 @@ const Login = () => {
       );
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token); // stores as string
-        localStorage.setItem("user", response.data.user); 
+        localStorage.setItem("user", JSON.stringify(response.data.user)); // carefull
         navigate("/Profile"); 
       }
     } catch (err) {
